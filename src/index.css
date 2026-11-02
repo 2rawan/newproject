@@ -1,3 +1,12 @@
+:root {
+  --primary: #7c3aed;
+  --primary-dark: #5b21b6;
+  --primary-light: #ede9fe;
+  --text: #111827;
+  --text-light: #6b7280;
+  --border: #e5e7eb;
+  --bg: #ffffff;
+}
 * {
   margin: 0;
   padding: 0;
@@ -6,4 +15,7 @@
 
 body {
   font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: var(--text);
+  background-color: var(--bg);
 }
