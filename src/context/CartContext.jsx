@@ -1,9 +1,20 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 
 const CartContext = createContext()
 
 export function CartProvider({ children }) {
-  const [cartItems, setCartItems] = useState([])
+  const [cartItems, setCartItems] = useState(() => {
+    try {
+      const saved = localStorage.getItem('cart')
+      return saved ? JSON.parse(saved) : []
+    } catch {
+      return []
+    }
+  })
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cartItems))
+  }, [cartItems])
 
   const addToCart = (product) => {
     setCartItems((prev) => {
@@ -28,12 +39,14 @@ export function CartProvider({ children }) {
     )
   }
 
+  const clearCart = () => setCartItems([])
+
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0)
   const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0)
 
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, removeFromCart, updateQuantity, cartCount, total }}
+      value={{ cartItems, addToCart, removeFromCart, updateQuantity, clearCart, cartCount, total }}
     >
       {children}
     </CartContext.Provider>

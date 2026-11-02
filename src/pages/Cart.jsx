@@ -48,7 +48,7 @@ function Cart() {
             <span>المجموع</span>
             <strong>${total}</strong>
           </div>
-          <button className="cart-btn">إتمام الشراء</button>
+          <Link to="/checkout" className="cart-btn">إتمام الشراء</Link>
         </div>
       </div>
     </div>
