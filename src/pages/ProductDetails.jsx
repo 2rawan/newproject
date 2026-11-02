@@ -1,9 +1,11 @@
 import { useParams, Link } from 'react-router-dom'
 import products from '../data/products'
+import { useCart } from '../context/CartContext'
 import './ProductDetails.css'
 
 function ProductDetails() {
   const { id } = useParams()
+  const { addToCart } = useCart()
   const product = products.find((p) => p.id === Number(id))
 
   if (!product) {
@@ -26,7 +28,7 @@ function ProductDetails() {
           <h1>{product.name}</h1>
           <p className="details-price">${product.price}</p>
           <p className="details-description">{product.description}</p>
-          <button>أضف للسلة</button>
+          <button onClick={() => addToCart(product)}>أضف للسلة</button>
         </div>
       </div>
     </div>

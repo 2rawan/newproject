@@ -95,3 +95,23 @@
   color: #dc2626;
   font-weight: bold;
 }
+.cart-link {
+  position: relative;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 6px;
+  background-color: var(--primary);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: bold;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

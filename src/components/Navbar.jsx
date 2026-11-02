@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom'
+import { useCart } from '../context/CartContext'
 import './Navbar.css'
 
 const STORE_NAME = 'Shopora'
 
 function Navbar() {
+  const { cartCount } = useCart()
+
   return (
     <header className="header">
       <div className="announcement">
@@ -21,7 +24,10 @@ function Navbar() {
         <div className="header-icons">
           <Link to="/account" title="حسابي">👤</Link>
           <Link to="/wishlist" title="المفضلة">♡</Link>
-          <Link to="/cart" title="السلة">🛒</Link>
+          <Link to="/cart" title="السلة" className="cart-link">
+            🛒
+            {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+          </Link>
         </div>
       </div>
 
